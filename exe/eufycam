@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'eufycam'
+require 'eufycam/cli'
+
+Eufycam::CLI.run(ARGV)

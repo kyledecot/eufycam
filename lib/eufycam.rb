@@ -1,6 +1,5 @@
 require "eufycam/version"
+require "eufycam/ffmpeg"
 
 module Eufycam
-  class Error < StandardError; end
-  # Your code goes here...
 end
