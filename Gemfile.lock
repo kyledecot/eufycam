@@ -2,13 +2,21 @@ PATH
   remote: .
   specs:
     eufycam (0.1.0)
+      colorize
       gli
+      terminal-table
 
 GEM
   remote: https://rubygems.org/
   specs:
+    coderay (1.1.2)
+    colorize (0.8.1)
     diff-lcs (1.3)
     gli (2.19.0)
+    method_source (1.0.0)
+    pry (0.13.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
     rake (10.5.0)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
@@ -23,6 +31,9 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.2)
+    terminal-table (1.8.0)
+      unicode-display_width (~> 1.1, >= 1.1.1)
+    unicode-display_width (1.7.0)
 
 PLATFORMS
   ruby
@@ -30,6 +41,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 2.0)
   eufycam!
+  pry
   rake (~> 10.0)
   rspec (~> 3.0)
 
