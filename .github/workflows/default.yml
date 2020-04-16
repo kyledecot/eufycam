@@ -75,6 +75,8 @@ jobs:
         ruby-version: 2.6.x
     - name: Install Bundler
       run: gem install bundler
+    - name: Bundle 
+      run: bundle install --jobs 4 --retry 3
     - uses: actions/download-artifact@v1
       with:
         name: eufycam-0.1.0.gem
