@@ -58,7 +58,7 @@ jobs:
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
       with:
-        name: eufycam-0.1.0.gem
+        name: gem
         path: eufycam-0.1.0.gem
 
   release:
@@ -79,8 +79,9 @@ jobs:
       run: bundle install --jobs 4 --retry 3
     - uses: actions/download-artifact@v1
       with:
-        name: eufycam-0.1.0.gem
-    - run: ls eufycam-0.1.0.gem
+        name: gem
+    - run: mv gem/eufycam-0.1.0.gem .
+    - run: ls 
     # - name: Push Gem to Rubygems
       # run: bundle exec rake release[rubygems]
     # - name: Push Gem to Github Package Registry
