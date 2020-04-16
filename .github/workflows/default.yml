@@ -68,14 +68,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Ruby 2.6
-      uses: actions/setup-ruby@v1
+    - uses: actions/download-artifact@v1
       with:
-        ruby-version: 2.6.x
-    - name: Install Bundler
-      run: gem install bundler
-    - name: Bundle
-      run: bundle install --jobs 4 --retry 3
+        name: eufycam-0.1.0.gem
+
     - name: Push Gem to Rubygems 
       run: bundle exec rake release[rubygems]
     - name: Push Gem to Github Package Registry
