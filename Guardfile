@@ -1,6 +1,8 @@
-require "guard/rspec/dsl"
+# frozen_string_literal: true
 
-guard :rspec, cmd: "bundle exec rspec" do
+require 'guard/rspec/dsl'
+
+guard :rspec, cmd: 'bundle exec rspec' do
   dsl = Guard::RSpec::Dsl.new(self)
   rspec = dsl.rspec
   ruby = dsl.ruby
