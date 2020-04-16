@@ -82,7 +82,7 @@ jobs:
         name: gem
     - run: mv gem/eufycam-0.1.0.gem .
     - run: ls 
-    # - name: Push Gem to Rubygems
-      # run: bundle exec rake release[rubygems]
-    # - name: Push Gem to Github Package Registry
-      # run: bundle exec rake release[github]
+    - name: Push Gem to Rubygems
+      run: bundle exec rake release[rubygems]
+    - name: Push Gem to Github Package Registry
+      run: bundle exec rake release[github]
