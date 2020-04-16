@@ -1,4 +1,4 @@
-name: Ruby
+name: Default
 
 on:
   push:
