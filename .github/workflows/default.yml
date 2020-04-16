@@ -54,6 +54,11 @@ jobs:
         gem install bundler
         bundle install --jobs 4 --retry 3
         bundle exec rake build
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: eufycam-0.1.0.gem
+        path: eufycam-0.1.0.gem
 
   release:
     name: Release
