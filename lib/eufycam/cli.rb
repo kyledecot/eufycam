@@ -39,16 +39,26 @@ module Eufycam
 				end 
 			end 
 
+			devices.command 'play' do |play|
+        play.action do |global_options, options, _args|
+					client = Client.new(**global_options.slice(:email, :password))
+
+					url = client.start_stream(
+						device_name: options['device-name']
+					)['url']
+
+					`ffplay -loglevel panic #{url}`
+        end 
+			end 
+
       devices.command 'list' do |list|
         list.action do |global_options, options, _args|
 					client = Client.new(**global_options.slice(:email, :password))
 
-					client.list_devices.each do |device|
-puts Terminal::Table.new(
-							title: 'Device'.green,
-			rows: device.slice("device_name", "device_sn", "station_sn").to_a
-						)
-					end 
+					results =client.list_devices
+
+
+					puts results.to_json
         end 
       end
     end 
