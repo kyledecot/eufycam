@@ -35,8 +35,8 @@ jobs:
     - name: Upload Gem
       uses: actions/upload-artifact@v1
       with:
-        name: eufycam-${{ EUFYCAM_VERSION }}.gem
-        path: eufycam-${{ EUFYCAM_VERSION }}.gem
+        name: eufycam-${{ env.EUFYCAM_VERSION }}.gem
+        path: eufycam-${{ env.EUFYCAM_VERSION }}.gem
 
   lint:
     name: Lint
@@ -118,9 +118,9 @@ jobs:
       run: export EUFYCAM_VERSION=$(bundle exec rake version)
     - uses: actions/download-artifact@v1
       with:
-        name: eufycam-${{ EUFYCAM_VERSION }}.gem
-        path: /eufycam-${{ EUFYCAM_VERSION }}.gem
-    - run: mv /eufycam-${{ EUFYCAM_VERSION }}.gem/eufycam-${{ EUFYCAM_VERSION }}.gem .
+        name: eufycam-${{ env.EUFYCAM_VERSION }}.gem
+        path: /eufycam-${{ env.EUFYCAM_VERSION }}.gem
+    - run: mv /eufycam-${{ env.EUFYCAM_VERSION }}.gem/eufycam-${{ EUFYCAM_VERSION }}.gem .
     - run: ls 
     - name: Push Gem to Rubygems
       run: bundle exec rake release[rubygems]
