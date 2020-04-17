@@ -46,11 +46,19 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
-    - name: Rubocop
-      run: |
-        gem install bundler
-        bundle install --jobs 4 --retry 3
-        bundle exec rubocop
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: ${{ runner.os }}-gems-
+    - name: Install Bundler
+      run: gem install bundler
+    - name: Configure Bundler
+      run: bundle config path vendor/bundle
+    - name: Bundle Install
+      run: bundle install --jobs 4 --retry 3
+    - name: Run Rubocop
+      run: bundle exec rubocop
 
   test:
     name: Test
