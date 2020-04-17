@@ -116,7 +116,7 @@ jobs:
     - uses: actions/download-artifact@v1
       with:
         name: eufycam-${{ env.EUFYCAM_VERSION }}.gem
-        path: /eufycam-${{ env.EUFYCAM_VERSION }}.gem
+        path: /
     - run: mv /eufycam-${{ env.EUFYCAM_VERSION }}.gem/eufycam-${{ env.EUFYCAM_VERSION }}.gem .
     - run: ls 
     - name: Push Gem to Rubygems
