@@ -22,8 +22,8 @@ module Eufycam
       devices.command :timelapse do |timelapse|
         timelapse.flag 'device-name', arg_name: 'DEVICE_NAME'
 
-        timelapse.action do |global_options, options, _args|
-          client = Client.new(global_options.slice('username', 'password'))
+        timelapse.action do |_global_options, options, _args|
+          # client = Client.new(global_options.slice('username', 'password'))
 
           puts "capture a timelapse #{options['device-name']}"
         end
