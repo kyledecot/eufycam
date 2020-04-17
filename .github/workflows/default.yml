@@ -120,7 +120,7 @@ jobs:
       with:
         name: eufycam-${{ env.EUFYCAM_VERSION }}.gem
         path: /eufycam-${{ env.EUFYCAM_VERSION }}.gem
-    - run: mv /eufycam-${{ env.EUFYCAM_VERSION }}.gem/eufycam-${{ EUFYCAM_VERSION }}.gem .
+    - run: mv /eufycam-${{ env.EUFYCAM_VERSION }}.gem/eufycam-${{ env.EUFYCAM_VERSION }}.gem .
     - run: ls 
     - name: Push Gem to Rubygems
       run: bundle exec rake release[rubygems]
