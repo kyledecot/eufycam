@@ -28,13 +28,16 @@ jobs:
       run: bundle config path vendor/bundle
     - name: Bundle Install
       run: bundle install --jobs 4 --retry 3
+    - name: Set EUFYCAM_VERSION
+      run: export EUFYCAM_VERSION=$(bundle exec rake version)
     - name: Build
       run: bundle exec rake build
-    - name: Upload Artifact
+    - name: Upload Gem
       uses: actions/upload-artifact@v1
       with:
-        name: eufycam-0.1.0.gem
-        path: eufycam-0.1.0.gem
+        name: eufycam-${{ EUFYCAM_VERSION }}.gem
+        path: eufycam-${{ EUFYCAM_VERSION }}.gem
+
   lint:
     name: Lint
     runs-on: ubuntu-latest
@@ -111,11 +114,13 @@ jobs:
       
     - name: Bundle 
       run: bundle install --jobs 4 --retry 3
+    - name: Set EUFYCAM_VERSION
+      run: export EUFYCAM_VERSION=$(bundle exec rake version)
     - uses: actions/download-artifact@v1
       with:
-        name: eufycam-0.1.0.gem
-        path: /eufycam-0.1.0.gem
-    - run: mv /eufycam-0.1.0.gem/eufycam-0.1.0.gem .
+        name: eufycam-${{ EUFYCAM_VERSION }}.gem
+        path: /eufycam-${{ EUFYCAM_VERSION }}.gem
+    - run: mv /eufycam-${{ EUFYCAM_VERSION }}.gem/eufycam-${{ EUFYCAM_VERSION }}.gem .
     - run: ls 
     - name: Push Gem to Rubygems
       run: bundle exec rake release[rubygems]
