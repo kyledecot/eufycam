@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    eufycam (0.1.0)
+    eufycam (0.2.0)
       colorize
       gli
       terminal-table
