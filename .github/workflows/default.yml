@@ -33,7 +33,7 @@ jobs:
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
       with:
-        name: gem
+        name: eufycam-0.1.0.gem
         path: eufycam-0.1.0.gem
   # lint:
     # name: Lint
@@ -94,8 +94,9 @@ jobs:
       run: bundle install --jobs 4 --retry 3
     - uses: actions/download-artifact@v1
       with:
-        name: gem
-    - run: mv gem/eufycam-0.1.0.gem .
+        name: eufycam-0.1.0.gem
+        path: /eufycam-0.1.0.gem
+    - run: mv /eufycam-0.1.0.gem/eufycam-0.1.0.gem .
     - run: ls 
     - name: Push Gem to Rubygems
       run: bundle exec rake release[rubygems]
