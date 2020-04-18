@@ -13,6 +13,7 @@ module Eufycam
 
     def post(path, access_token, body = nil)
       uri = URI("https://mysecurity.eufylife.com/api/v1/#{path}")
+      
       Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
         yield http.request(request(path, access_token, body))
       end
