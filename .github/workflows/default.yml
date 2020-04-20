@@ -97,6 +97,11 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: ${{ runner.os }}-gems-
     - name: Install Bundler
       run: gem install bundler
     - name: Configure Bundler
@@ -109,7 +114,7 @@ jobs:
         chmod 0600 $HOME/.gem/credentials
         printf -- "---\n:rubygems_api_key: ${{secrets.RUBYGEMS_API_KEY}}\n:github: Bearer ${{secrets.PERSONAL_ACCESS_TOKEN}}" > $HOME/.gem/credentials
       
-    - name: Bundle 
+    - name: Bundle Install
       run: bundle install --jobs 4 --retry 3
     - name: Set EUFYCAM_VERSION
       run: echo ::set-env name=EUFYCAM_VERSION::$(bundle exec rake version)
@@ -117,7 +122,6 @@ jobs:
       with:
         name: eufycam-${{ env.EUFYCAM_VERSION }}.gem
         path: /tmp
-    - run: ls /tmp
     - run: mv /tmp/eufycam-${{ env.EUFYCAM_VERSION }}.gem .
     - name: Push Gem to Rubygems
       run: bundle exec rake release[rubygems]
