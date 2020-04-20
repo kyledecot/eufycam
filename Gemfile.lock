@@ -2,9 +2,9 @@ PATH
   remote: .
   specs:
     eufycam (0.2.0)
-      colorize
-      gli
-      terminal-table
+      colorize (~> 0.8)
+      gli (~> 2.19)
+      terminal-table (~> 1.8)
 
 GEM
   remote: https://rubygems.org/
@@ -91,11 +91,11 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 2.0)
   eufycam!
-  guard-rspec
-  pry
+  guard-rspec (~> 4.7)
+  pry (~> 0.13)
   rake (~> 13.0)
   rspec (~> 3.0)
-  rubocop
+  rubocop (~> 0.81)
   simplecov (~> 0.18)
 
 BUNDLED WITH
