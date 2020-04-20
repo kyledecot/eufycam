@@ -26,7 +26,7 @@ jobs:
     - name: Bundle Install
       run: bundle install --jobs 4 --retry 3
     - name: Set EUFYCAM_VERSION
-      run: echo ::set-env name=EUFYCAM_VERSION::$(bundle exec rake version)
+      run: echo ::set-env name=EUFYCAM_VERSION::$(bundle exec rake version:current)
     - name: Build
       run: bundle exec rake build
     - name: Upload Gem
@@ -117,7 +117,7 @@ jobs:
     - name: Bundle Install
       run: bundle install --jobs 4 --retry 3
     - name: Set EUFYCAM_VERSION
-      run: echo ::set-env name=EUFYCAM_VERSION::$(bundle exec rake version)
+      run: echo ::set-env name=EUFYCAM_VERSION::$(bundle exec rake version:current)
     - uses: actions/download-artifact@v1
       with:
         name: eufycam-${{ env.EUFYCAM_VERSION }}.gem
