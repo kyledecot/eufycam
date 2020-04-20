@@ -25,15 +25,15 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'colorize'
-  spec.add_runtime_dependency 'gli'
-  spec.add_runtime_dependency 'terminal-table'
+  spec.add_runtime_dependency 'colorize', '~> 0.8'
+  spec.add_runtime_dependency 'gli', '~> 2.19'
+  spec.add_runtime_dependency 'terminal-table', '~> 1.8'
 
   spec.add_development_dependency 'bundler', '~> 2.0'
-  spec.add_development_dependency 'guard-rspec'
-  spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'guard-rspec', '~> 4.7'
+  spec.add_development_dependency 'pry', '~> 0.13'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'rubocop'
+  spec.add_development_dependency 'rubocop', '~> 0.81'
   spec.add_development_dependency 'simplecov', '~> 0.18'
 end
