@@ -4,6 +4,7 @@
 require 'gli'
 require 'terminal-table'
 require 'colorize'
+require 'eufycam'
 
 module Eufycam
   class CLI
