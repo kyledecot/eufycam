@@ -1,0 +1,9 @@
+---
+version: '3'
+
+services:
+  eufycam:
+    build: .
+    environment:
+      - EUFYCAM_EMAIL
+      - EUFYCAM_PASSWORD
