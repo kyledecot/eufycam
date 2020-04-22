@@ -4,6 +4,7 @@ PATH
     eufycam (0.4.0)
       colorize (~> 0.8)
       gli (~> 2.19)
+      lumberjack
       terminal-table (~> 1.8)
 
 GEM
