@@ -8,7 +8,6 @@ require 'colorize'
 require 'eufycam'
 require 'lumberjack'
 
-
 module Eufycam
   class CLI
     extend GLI::App
@@ -25,7 +24,6 @@ module Eufycam
          arg_name: 'PASSWORD'
 
     command :devices do |devices|
-  
       devices.command 'timelapse' do |timelapse|
         timelapse.flag 'device-name', arg_name: 'DEVICE_NAME', required: true, desc: 'Device name'
         timelapse.flag 'interval', arg_name: 'INTERVAL', default_value: 60, desc: 'Interval in seconds', type: Integer
@@ -33,23 +31,22 @@ module Eufycam
         timelapse.action do |global_options, options, _args|
           client = Client.new(global_options.slice(:email, :password))
 
-
           LOGGER.info("Device Name: #{options['device-name']}")
 
           url = client.start_stream(
             device_name: options['device-name']
           )['url']
-          
-          loop do 
+
+          loop do
             command = "ffmpeg -loglevel quiet -i \"#{url}\" -vframes 1 eufycam-#{Time.now.to_i}.jpg"
 
             LOGGER.info("COMMAND: #{command}")
 
             `#{command}`
 
-            print "."
+            print '.'
             sleep options[:interval]
-          end 
+          end
         end
       end
 
@@ -68,7 +65,6 @@ module Eufycam
       devices.command 'play' do |play|
         play.action do |global_options, options, _args|
           client = Client.new(**global_options.slice(:email, :password))
-          
 
           url = client.start_stream(
             device_name: options['device-name']
