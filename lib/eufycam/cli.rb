@@ -25,10 +25,10 @@ module Eufycam
          arg_name: 'PASSWORD'
 
     command :devices do |devices|
-      devices.desc 'captures pngs periodically'
-
+  
       devices.command 'timelapse' do |timelapse|
-        timelapse.flag 'device-name', arg_name: 'DEVICE_NAME', required: true
+        timelapse.flag 'device-name', arg_name: 'DEVICE_NAME', required: true, desc: 'Device name'
+        timelapse.flag 'interval', arg_name: 'INTERVAL', default_value: 60, desc: 'Interval in seconds', type: Integer
 
         timelapse.action do |global_options, options, _args|
           client = Client.new(global_options.slice(:email, :password))
@@ -41,14 +41,14 @@ module Eufycam
           )['url']
           
           loop do 
-            command = "ffmpeg -i \"#{url}\" -ss 00:05 -vframes 1 eufycam-#{Time.now.to_i}.jpg"
+            command = "ffmpeg -loglevel quiet -i \"#{url}\" -vframes 1 eufycam-#{Time.now.to_i}.jpg"
 
             LOGGER.info("COMMAND: #{command}")
 
             `#{command}`
 
             print "."
-            sleep 5
+            sleep options[:interval]
           end 
         end
       end
