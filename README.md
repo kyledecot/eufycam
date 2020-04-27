@@ -20,7 +20,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### CLI
+
+```bash
+eufycam help
+```
+
+### Ruby
 
 ## Development
 
