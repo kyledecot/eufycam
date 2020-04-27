@@ -4,7 +4,7 @@
 require 'gli'
 require 'shellwords'
 require 'terminal-table'
-require 'colorize'
+require 'rainbow'
 require 'eufycam'
 require 'lumberjack'
 

@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'colorize', '~> 0.8'
+  spec.add_runtime_dependency 'rainbow', '~> 3.0'
   spec.add_runtime_dependency 'gli', '~> 2.19'
   spec.add_runtime_dependency 'lumberjack', '~> 1.2'
   spec.add_runtime_dependency 'terminal-table', '~> 1.8'
