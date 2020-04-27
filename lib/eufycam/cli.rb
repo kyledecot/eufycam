@@ -25,7 +25,7 @@ module Eufycam
 
     command :devices do |devices|
       devices.command 'timelapse' do |timelapse|
-        timelapse.flag 'device-name', arg_name: 'DEVICE_NAME', required: true, desc: 'Device name'
+        timelapse.flag 'device-name', arg_name: 'DEVICE_NAME', desc: 'Device name'
         timelapse.flag 'interval', arg_name: 'INTERVAL', default_value: 60, desc: 'Interval in seconds', type: Integer
 
         timelapse.action do |global_options, options, _args|
@@ -51,7 +51,7 @@ module Eufycam
       end
 
       devices.command 'start-stream' do |start_stream|
-        start_stream.flag 'device-name', arg_name: 'DEVICE_NAME', required: true
+        start_stream.flag 'device-name', arg_name: 'DEVICE_NAME'
 
         start_stream.action do |global_options, options, _args|
           client = Client.new(**global_options.slice(:email, :password))
