@@ -1,6 +1,7 @@
 # eufycam
 
-![Default](https://github.com/kyledecot/eufycam/workflows/Default/badge.svg)
+[![Default](https://github.com/kyledecot/eufycam/workflows/Default/badge.svg)](https://github.com/kyledecot/eufycam/actions?query=workflow%3ADefault)
+
 ## Installation
 
 Add this line to your application's Gemfile:
