@@ -145,6 +145,13 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: kyledecot/eufycam
         tags: "latest, ${{ env.EUFYCAM_VERSION }}"
+    - uses: docker/build-push-action@v1
+      with:
+        username: ${{ github.actor }}
+        password: ${{secrets.PERSONAL_ACCESS_TOKEN}}
+        repository: kyledecot/eufycam/eufycam
+        registry: docker.pkg.github.com
+        tags: "latest, ${{ env.EUFYCAM_VERSION }}"
 
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
