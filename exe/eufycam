@@ -3,4 +3,4 @@
 
 require 'eufycam/cli'
 
-Eufycam::CLI.run(ARGV)
+exit Eufycam::CLI.run(ARGV)
