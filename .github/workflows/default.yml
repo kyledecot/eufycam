@@ -128,6 +128,7 @@ jobs:
       continue-on-error: true
     - name: Push Gem to Github Package Registry
       run: bundle exec rake release[github]
+      continue-on-error: true
     - name: Create Release
       id: create_release
       uses: actions/create-release@latest
