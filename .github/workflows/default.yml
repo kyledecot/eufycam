@@ -29,6 +29,8 @@ jobs:
       run: echo ::set-env name=EUFYCAM_VERSION::$(bundle exec rake version:current)
     - name: Build
       run: bundle exec rake build
+    - name: Docker
+      run: docker build . -t kyledecot/eufycam:latest
     - name: Upload Gem
       uses: actions/upload-artifact@v1
       with:
