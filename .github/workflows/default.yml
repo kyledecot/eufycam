@@ -125,6 +125,7 @@ jobs:
     - run: mv /tmp/eufycam-${{ env.EUFYCAM_VERSION }}.gem .
     - name: Push Gem to Rubygems
       run: bundle exec rake release[rubygems]
+      continue-on-error: true
     - name: Push Gem to Github Package Registry
       run: bundle exec rake release[github]
     - name: Create Release
@@ -137,8 +138,6 @@ jobs:
         release_name: ${{ github.ref }}
         draft: false
         prerelease: false
-    - name: Docker
-      run: docker build . -t kyledecot/eufycam:latest
     - uses: docker/build-push-action@v1
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
