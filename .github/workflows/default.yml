@@ -144,9 +144,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: kyledecot/eufycam
-        tags:
-          - latest
-          - ${{ env.EUFYCAM_VERSION }}
+        tags: "latest, ${{ env.EUFYCAM_VERSION }}"
 
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
